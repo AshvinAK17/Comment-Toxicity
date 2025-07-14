@@ -1,2 +1,0 @@
-[general]
-postDeployScript = "python nltk_downloader.py"

@@ -15,11 +15,6 @@ import os
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 st.set_page_config(page_title="Toxicity Detection App")
 
-# Download nltk data if needed
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-
 # ----- Load files from GitHub -----
 repo_url = "https://raw.githubusercontent.com/AshvinAK17/Comment-Toxicity/master/"
 

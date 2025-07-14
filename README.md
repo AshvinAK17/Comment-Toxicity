@@ -136,7 +136,7 @@ Direct Link to access the streamlit: **https://ashvinak17-comment-toxicity-comme
 
 4. **Run Streamlit web app** :
 
-        streamlit run Comment_toxicity_streamlit.py
+         python -m streamlit run Comment_toxicity_streamlit.py
 
 The app will open in your browser at http://localhost:8501
 

@@ -1,15 +1,22 @@
+import nltk
+
+# Download resources first — must be before using anything
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+# Now import rest
 import streamlit as st
 import pandas as pd
 import torch
 import json
-import nltk
 import re
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from torch import nn
 import urllib.request
-import os 
+import os
 
 # Check and download missing NLTK data
 for resource in ['punkt', 'stopwords', 'wordnet']:

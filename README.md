@@ -1,6 +1,4 @@
 ###  Comment Toxicity Detection
-
-**Comment Toxicity:**  
 An interactive deep learning project built with Python and Streamlit  
 that helps identify and flag toxic comments (e.g., hate speech, threats, insults) in text data.  
 Users can test single comments, upload CSV files for bulk predictions, and view data insights in a clean web interface.
@@ -112,11 +110,11 @@ Direct Link to access the streamlit: **https://ashvinak17-comment-toxicity-comme
 
 # Features:
 
-Predict single comment toxicity.
+- Predict single comment toxicity.
 
-Upload CSV for bulk predictions.
+- Upload CSV for bulk predictions.
 
-View and download prediction results.
+- View and download prediction results.
 
 # Deployment Guide:
 

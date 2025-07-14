@@ -6,24 +6,16 @@ nltk_data_path = os.path.join(os.getcwd(), "nltk_data")
 os.makedirs(nltk_data_path, exist_ok=True)
 nltk.data.path.append(nltk_data_path)
 
-# Download resources with verification
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt', download_dir=nltk_data_path)
-    nltk.data.path.append(nltk_data_path)  # Refresh path after download
-
+# Download only stopwords and wordnet (skip punkt completely)
 try:
     nltk.data.find('corpora/stopwords')
 except LookupError:
     nltk.download('stopwords', download_dir=nltk_data_path)
-    nltk.data.path.append(nltk_data_path)
 
 try:
     nltk.data.find('corpora/wordnet')
 except LookupError:
     nltk.download('wordnet', download_dir=nltk_data_path)
-    nltk.data.path.append(nltk_data_path)
 
 # Now import rest
 import streamlit as st
@@ -33,10 +25,8 @@ import json
 import re
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
 from torch import nn
 import urllib.request
-import os
 
 # ----- Setup -----
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -111,8 +101,8 @@ def clean_text(text):
     text = re.sub(r"\'d", " would ", text)
     text = re.sub(r"\'ll", " will ", text)
     text = re.sub(r"\'scuse", " excuse ", text)
-    tokens = word_tokenize(text)
-    tokens = [lemmatizer.lemmatize(t) for t in tokens if t.isalpha() and t not in sw and len(t)>=4]
+    tokens = re.findall(r'\b\w+\b', text)
+    tokens = [lemmatizer.lemmatize(t) for t in tokens if t.isalpha() and t not in sw and len(t) >= 4]
     return tokens
 
 def text_to_tensor(tokens):

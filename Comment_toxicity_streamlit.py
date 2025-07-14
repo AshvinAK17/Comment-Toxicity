@@ -1,9 +1,29 @@
 import nltk
+import os
 
-# Download resources first 
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
+# Set NLTK data path to a directory in your app
+nltk_data_path = os.path.join(os.getcwd(), "nltk_data")
+os.makedirs(nltk_data_path, exist_ok=True)
+nltk.data.path.append(nltk_data_path)
+
+# Download resources with verification
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt', download_dir=nltk_data_path)
+    nltk.data.path.append(nltk_data_path)  # Refresh path after download
+
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords', download_dir=nltk_data_path)
+    nltk.data.path.append(nltk_data_path)
+
+try:
+    nltk.data.find('corpora/wordnet')
+except LookupError:
+    nltk.download('wordnet', download_dir=nltk_data_path)
+    nltk.data.path.append(nltk_data_path)
 
 # Now import rest
 import streamlit as st
@@ -17,16 +37,6 @@ from nltk.tokenize import word_tokenize
 from torch import nn
 import urllib.request
 import os
-
-# Check and download missing NLTK data
-for resource in ['punkt', 'stopwords', 'wordnet']:
-    try:
-        if resource == 'punkt':
-            nltk.data.find('tokenizers/punkt')
-        else:
-            nltk.data.find(f'corpora/{resource}')
-    except LookupError:
-        nltk.download(resource)
 
 # ----- Setup -----
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

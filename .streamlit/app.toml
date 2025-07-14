@@ -1,2 +1,5 @@
+[server]
+headless = true
+
 [general]
-postDeployScript = "python nltk_downloader.py"
+postDeployScript = ".streamlit/nltk_downloader.py"

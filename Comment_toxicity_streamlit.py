@@ -1,5 +1,5 @@
 import nltk
-import os
+import os 
 
 # Set NLTK data path to a directory in your app
 nltk_data_path = os.path.join(os.getcwd(), "nltk_data")

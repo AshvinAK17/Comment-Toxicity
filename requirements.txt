@@ -2,4 +2,4 @@ torch
 pandas
 scikit-learn
 nltk
-streamlit
+streamlit 

@@ -1,5 +1,0 @@
-[server]
-headless = true
-
-[general]
-postDeployScript = ".streamlit/nltk_downloader.py"

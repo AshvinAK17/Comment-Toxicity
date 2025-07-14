@@ -1,6 +1,6 @@
 import nltk
 
-# Download resources first — must be before using anything
+# Download resources first 
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')

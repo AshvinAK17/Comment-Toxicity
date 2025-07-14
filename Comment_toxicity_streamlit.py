@@ -11,6 +11,20 @@ from torch import nn
 import urllib.request
 import os 
 
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+try:
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('stopwords')
+try:
+    nltk.data.find('corpora/wordnet')
+except LookupError:
+    nltk.download('wordnet')
+
+
 # ----- Setup -----
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 st.set_page_config(page_title="Toxicity Detection App")

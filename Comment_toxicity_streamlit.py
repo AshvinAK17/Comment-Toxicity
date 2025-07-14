@@ -11,10 +11,13 @@ from torch import nn
 import urllib.request
 import os 
 
-# Check and download only if missing
+# Check and download missing NLTK data
 for resource in ['punkt', 'stopwords', 'wordnet']:
     try:
-        nltk.data.find(f'tokenizers/{resource}' if resource=='punkt' else f'corpora/{resource}')
+        if resource == 'punkt':
+            nltk.data.find('tokenizers/punkt')
+        else:
+            nltk.data.find(f'corpora/{resource}')
     except LookupError:
         nltk.download(resource)
 

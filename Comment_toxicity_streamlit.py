@@ -9,16 +9,18 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from torch import nn
 import urllib.request
-import os
+import os 
+
+# Check and download only if missing
+for resource in ['punkt', 'stopwords', 'wordnet']:
+    try:
+        nltk.data.find(f'tokenizers/{resource}' if resource=='punkt' else f'corpora/{resource}')
+    except LookupError:
+        nltk.download(resource)
 
 # ----- Setup -----
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 st.set_page_config(page_title="Toxicity Detection App")
-
-# Download nltk data if needed
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
 
 # ----- Load files from GitHub -----
 repo_url = "https://raw.githubusercontent.com/AshvinAK17/Comment-Toxicity/master/"

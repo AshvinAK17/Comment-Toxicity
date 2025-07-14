@@ -1,6 +1,5 @@
 ###  Comment Toxicity Detection
-An interactive deep learning project built with Python and Streamlit  
-that helps identify and flag toxic comments (e.g., hate speech, threats, insults) in text data.  
+An interactive deep learning project built with Python and Streamlit that helps identify and flag toxic comments (e.g., hate speech, threats, insults) in text data.  
 Users can test single comments, upload CSV files for bulk predictions, and view data insights in a clean web interface.
 
 ---

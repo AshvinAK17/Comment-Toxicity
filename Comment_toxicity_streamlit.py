@@ -11,19 +11,12 @@ from torch import nn
 import urllib.request
 import os 
 
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt')
-try:
-    nltk.data.find('corpora/stopwords')
-except LookupError:
-    nltk.download('stopwords')
-try:
-    nltk.data.find('corpora/wordnet')
-except LookupError:
-    nltk.download('wordnet')
-
+# Check and download only if missing
+for resource in ['punkt', 'stopwords', 'wordnet']:
+    try:
+        nltk.data.find(f'tokenizers/{resource}' if resource=='punkt' else f'corpora/{resource}')
+    except LookupError:
+        nltk.download(resource)
 
 # ----- Setup -----
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

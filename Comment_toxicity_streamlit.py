@@ -8,6 +8,8 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from torch import nn
+import urllib.request
+import os
 
 # ----- Setup -----
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -17,6 +19,19 @@ st.set_page_config(page_title="Toxicity Detection App")
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
+
+# ----- Load files from GitHub -----
+repo_url = "https://raw.githubusercontent.com/AshvinAK17/Comment-Toxicity/master/"
+
+# Helper: download file if not exists locally
+def download_if_not_exists(filename, url):
+    if not os.path.exists(filename):
+        urllib.request.urlretrieve(url, filename)
+
+# Download needed files
+download_if_not_exists("word2idx.json", repo_url + "word2idx.json")
+download_if_not_exists("BiLSTM_metrics.json", repo_url + "BiLSTM_metrics.json")
+download_if_not_exists("BiLSTM_model.pth", "https://github.com/AshvinAK17/Comment-Toxicity/raw/master/BiLSTM_model.pth")
 
 # Load word2idx
 with open("word2idx.json") as f:
@@ -107,7 +122,7 @@ with tab1:
             st.warning("Please enter a comment!")
 
 with tab2:
-    st.subheader(" Model Performance Metrics")
+    st.subheader("📊 Model Performance Metrics")
     st.write("**BiLSTM**")
     st.json(metrics["BiLSTM"])
 

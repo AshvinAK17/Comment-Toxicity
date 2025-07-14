@@ -9,7 +9,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from torch import nn
 import urllib.request
-import os
+import os 
 
 # ----- Setup -----
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

@@ -106,7 +106,11 @@ def clean_text(text):
     return tokens
 
 def text_to_tensor(tokens):
-    indices = [word2idx.get(word, word2idx["<UNK>"]) for word in tokens]
+    if not tokens:
+        # add <UNK> if tokens are empty to avoid empty tensor
+        indices = [word2idx.get("<UNK>", 0)]
+    else:
+        indices = [word2idx.get(word, word2idx["<UNK>"]) for word in tokens]
     tensor = torch.tensor(indices, dtype=torch.long).unsqueeze(0).to(device)
     return tensor
 

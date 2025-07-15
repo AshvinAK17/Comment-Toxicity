@@ -175,7 +175,7 @@ def train_and_evaluate(model, train_loader, pos_weight, input_train, labels):
 
 # 7. Run script directly: load data, prepare & train
 
-train_path = "https://media.githubusercontent.com/media/AshvinAK17/Comment-Toxicity/refs/heads/master/test.csv"
+train_path = "https://media.githubusercontent.com/media/AshvinAK17/Comment-Toxicity/refs/heads/master/train.csv"
 train_df = preprocess_data(train_path)
 word2idx = create_word2idx(train_df['cleaned'])
 train_padded = vectorize_and_pad(train_df['cleaned'], word2idx)

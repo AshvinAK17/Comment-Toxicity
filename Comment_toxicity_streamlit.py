@@ -117,7 +117,7 @@ def text_to_tensor(tokens):
 # ----- Streamlit UI -----
 st.title("Comment Toxicity Detection")
 
-tab1, tab2, tab3 = st.tabs(["💬Single Comment", "📈 Metrics & Insights", "📁 Bulk CSV"])
+tab1, tab2, tab3 = st.tabs(["💬Single Comment", "📈 Metrics", "📁 Bulk CSV"])
 
 with tab1:
     st.subheader("Enter a comment to check toxicity:")

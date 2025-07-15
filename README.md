@@ -46,7 +46,7 @@ Both models are trained and saved as:
 ---
 
 ##  Basic Workflow & Execution
-1. **Training** (`Comment-Toxicity.py`):  
+1. **Training** (`Comment_toxicity.ipynb`):  
    - Cleans and vectorizes data.
    - Trains both models.
    - Saves: model weights, metrics JSON files, and `word2idx.json`.
@@ -71,7 +71,7 @@ Comment-Toxicity/
 ├─ BiLSTM_metrics.json
 ├─ BiLSTM_model.pth
 ├─ BiLSTM_test_predictions.csv
-├─ Comment-Toxicity.py
+├─ Comment_toxicity.ipynb
 ├─ Comment_toxicity_streamlit.py
 ├─ TextCNN_metrics.json
 ├─ TextCNN_model.pth
@@ -87,7 +87,7 @@ Comment-Toxicity/
 
 train.csv / test.csv – Input datasets.
 
-Comment-Toxicity.py – Source code for training and preprocessing.
+Comment_toxicity.ipynb – Source code for training and preprocessing.
 
 Comment_toxicity_streamlit.py – Streamlit web application.
 
